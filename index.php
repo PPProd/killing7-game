@@ -42,6 +42,7 @@ if(isset($_SESSION['id'])){
     <!-- <link rel="stylesheet" href="assets/css/bootstrap-select.less"> -->
     <link rel="stylesheet" href="assets/scss/style.css">
     <link href="assets/css/lib/vector-map/jqvmap.min.css" rel="stylesheet">
+	    <link rel="stylesheet" href="assets/css/lib/chosen/chosen.min.css">
 	
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
@@ -76,7 +77,7 @@ if(isset($_SESSION['id'])){
                     <li><a href="index.php?p=inventory"><i class="menu-icon fa fa-key"></i> Eszköztár </a></li>
 					<li><a href="index.php?p=kill"><i class="menu-icon fa fa-bullseye"></i> Gyilkosság</a></li>
 					<li><a href="index.php?p=manual"><i class="menu-icon fa fa-bars"></i> Játék leírás </a></li>
-					<li><a href="index.php?p=map"><i class="menu-icon fa fa-map-marker"></i> Térkép </a></li>
+					<!--li><a href="index.php?p=map"><i class="menu-icon fa fa-map-marker"></i> Térkép </a></li-->
 					<li><a href="pages/logout.php"><i class="menu-icon fa fa-minus-square"></i> Kijelentkezés </a></li>
 					
 					<?php if($_SESSION['auth'] == 3){

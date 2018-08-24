@@ -10,15 +10,11 @@
 	session_start();
 	include_once('../db.php');
 	include_once('../ugro.php');
-	if(isset($_SESSION['id'])){
-				ugras("index.php",0);
-			}
+	if($_SESSION['id'] != 2){
+			ugras("index.php",0);
+		}
 			
 		if(isset($_POST['signin'])){
-			
-			
-			
-			
 			/*PDO*/
 			$link = new PDO("mysql:host=".host.";dbname=".database, username, password);
 			$stmt = $link->prepare("INSERT INTO usr (user, name, pwd, location, description) VALUES (:usr, :name, :pwd, :location, :description)");
@@ -42,6 +38,7 @@
 				$location=0;
 			}
 			$stmt->execute();
+			print $name.' Felvéve';
 			/*END PDO*/
 		}
 	?>

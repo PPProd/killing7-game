@@ -10,13 +10,11 @@ if (isset($_POST['player']) && !empty($_POST['player'])) {
 			<th>Név</th>
 			<th>Leírás</th>
 			<th>Súly</th>
+			<th>Áthelyez</th>
 		  </tr>
 		</thead>
 		<tbody>';
-	$link = new PDO("mysql:host=" . host . ";dbname=" . database, username, password, array(
-    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-    PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"
-  ));
+	$link = new PDO("mysql:host=" . host . ";dbname=" . database, username, password);
 	$sql = "SELECT id, name, description, at, weight FROM items WHERE at=" . $_POST['player'];
 	$result = $link->query($sql);
 	foreach($result as $row) {
@@ -25,6 +23,7 @@ if (isset($_POST['player']) && !empty($_POST['player'])) {
 			<td>' . $row['name'] . '</td>
 			<td>' . $row['description'] . '</td>
 			<td>' . $row['weight'] . '</td>
+			<td><button type="button" class="btn btn-primary" onclick="my_moveInventory('.$row['id'].', '.$_POST['other'].');">Lerak/Felvesz</button></td>
 		</tr>
 		
 		';
@@ -47,13 +46,11 @@ else {
 				<th>Név</th>
 				<th>Leírás</th>
 				<th>Súly</th>
+				<th>Áthelyez</th>
 			  </tr>
 			</thead>
 			<tbody>';
-	$link = new PDO("mysql:host=" . host . ";dbname=" . database, username, password, array(
-    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-    PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"
-  ));
+	$link = new PDO("mysql:host=" . host . ";dbname=" . database, username, password);
 	$sql = "SELECT id, name, description, at, weight FROM items WHERE at=" . $_GET['player'];
 	$result = $link->query($sql);
 	foreach($result as $row) {
@@ -62,6 +59,7 @@ else {
 			<td>' . $row['name'] . '</td>
 			<td>' . $row['description'] . '</td>
 			<td>' . $row['weight'] . '</td>
+			<td><button type="button" class="btn btn-primary" onclick="my_moveInventory('.$row['id'].', '.$_POST['other'].');">Lerak/Felvesz</button></td>
 		</tr>
 		';
 	}
